@@ -16,3 +16,6 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('book') }}"><i class="nav-icon la la-address-book"></i> Books</a></li>
 
 @endcan
+@can('manage librarian')
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('librarian') }}"><i class="nav-icon la la-question"></i> Librarians</a></li>
+@endcan
