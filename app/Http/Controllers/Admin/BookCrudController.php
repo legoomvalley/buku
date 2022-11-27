@@ -41,6 +41,15 @@ class BookCrudController extends CrudController
     {
         CRUD::column('book_title')->type('text');
         CRUD::addColumn(['name' => 'book_title', 'type' => 'text']); 
+        CRUD::column('book_author')->type('text');
+        CRUD::addColumn(['name' => 'book_author', 'type' => 'text']); 
+        CRUD::column('year_publish')->type('number');
+        CRUD::addColumn(['name' => 'year_publish', 'type' => 'number']); 
+        CRUD::column('ISBN')->type('number');
+        CRUD::addColumn(['name' => 'ISBN', 'type' => 'number']); 
+        CRUD::column('book_status')->type('text');
+        CRUD::addColumn(['name' => 'book_status', 'type' => 'text']); 
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

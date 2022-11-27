@@ -17,5 +17,9 @@
 
 @endcan
 @can('manage librarian')
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('librarian') }}"><i class="nav-icon la la-question"></i> Librarians</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('librarian') }}"><i class="nav-icon la la-male"></i> Librarians</a></li>
+@endcan
+
+@can('manage borrow')
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('borrow') }}"><i class="nav-icon la la-calendar-minus"></i> Borrows</a></li>
 @endcan

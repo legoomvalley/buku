@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Librarian extends Model
+class Borrow extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Librarian extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'librarians';
+    protected $table = 'borrows';
     protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['user_id','librarian_name'];
+    protected $fillable = ['mem_id','book_id','librarian_id','borrow_date','return_date','penalty'];
     // protected $hidden = [];
     // protected $dates = [];
 

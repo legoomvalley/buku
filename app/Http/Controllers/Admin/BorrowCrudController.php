@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LibrarianRequest;
+use App\Http\Requests\BorrowRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class LibrarianCrudController
+ * Class BorrowCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class LibrarianCrudController extends CrudController
+class BorrowCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class LibrarianCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Librarian::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/librarian');
-        CRUD::setEntityNameStrings('librarian', 'librarians');
+        CRUD::setModel(\App\Models\Borrow::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/borrow');
+        CRUD::setEntityNameStrings('borrow', 'borrows');
     }
 
     /**
@@ -39,10 +39,18 @@ class LibrarianCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('user_id')->type('text');
-        CRUD::addColumn(['name' => 'user_id', 'type' => 'text']); 
-        CRUD::column('librarian_name')->type('text');
-        CRUD::addColumn(['name' => 'librarian_name', 'type' => 'text']); 
+        CRUD::column('mem_id')->type('number');
+        CRUD::addColumn(['name' => 'mem_id', 'type' => 'number']);
+        CRUD::column('book_id')->type('number');
+        CRUD::addColumn(['name' => 'book_id', 'type' => 'number']);
+        CRUD::column('library_id')->type('number');
+        CRUD::addColumn(['name' => 'library_id', 'type' => 'number']);
+        CRUD::column('borrow_date')->type('date');
+        CRUD::addColumn(['name' => 'borrow_date', 'type' => 'date']);
+        CRUD::column('return_date')->type('date');
+        CRUD::addColumn(['name' => 'return_date', 'type' => 'date']);
+        CRUD::column('penalty')->type('number');
+        CRUD::addColumn(['name' => 'penalty', 'type' => 'number']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,10 +67,21 @@ class LibrarianCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('user_id')->type('text');
-        CRUD::addField(['name' => 'user_id', 'type' => 'text']); 
-        CRUD::field('librarian_name')->type('text');
-        CRUD::addField(['name' => 'librarian_name', 'type' => 'text']); 
+        CRUD::setValidation(BorrowRequest::class);
+        CRUD::field('mem_id')->type('number');
+        CRUD::addField(['name' => 'mem_id', 'type' => 'number']);
+        CRUD::field('book_id')->type('number');
+        CRUD::addField(['name' => 'book_id', 'type' => 'number']);
+        CRUD::field('library_id')->type('number');
+        CRUD::addField(['name' => 'library_id', 'type' => 'number']);
+        CRUD::field('borrow_date')->type('date');
+        CRUD::addField(['name' => 'borrow_date', 'type' => 'date']);
+        CRUD::field('return_date')->type('date');
+        CRUD::addField(['name' => 'return_date', 'type' => 'date']);
+        CRUD::field('penalty')->type('number');
+        CRUD::addField(['name' => 'penalty', 'type' => 'number']);
+
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
