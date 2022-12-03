@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\BookRequest;
+use App\Http\Requests\PenaltyRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class BookCrudController
+ * Class PenaltyCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class BookCrudController extends CrudController
+class PenaltyCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class BookCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Book::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/book');
-        CRUD::setEntityNameStrings('book', 'books');
+        CRUD::setModel(\App\Models\Penalty::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/penalty');
+        CRUD::setEntityNameStrings('penalty', 'penalties');
     }
 
     /**
@@ -39,17 +39,14 @@ class BookCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('book_title')->type('text');
-        CRUD::addColumn(['name' => 'book_title', 'type' => 'text']); 
-        CRUD::column('book_author')->type('text');
-        CRUD::addColumn(['name' => 'book_author', 'type' => 'text']); 
-        CRUD::column('year_publish')->type('date');
-        CRUD::addColumn(['name' => 'year_publish', 'type' => 'date']); 
-        CRUD::column('ISBN')->type('number');
-        CRUD::addColumn(['name' => 'ISBN', 'type' => 'number']); 
-        CRUD::column('book_status')->type('text');
-        CRUD::addColumn(['name' => 'book_status', 'type' => 'text']); 
-
+        //CRUD::column('id')->type('number');
+        //CRUD::addColumns(['name' => 'id', 'type' => 'number']); 
+        CRUD::column('description')->type('text');
+        CRUD::addColumn(['name' => 'description', 'type' => 'text']); 
+        CRUD::column('type')->type('text');
+        CRUD::addColumn(['name' => 'type', 'type' => 'text']); 
+        CRUD::column('amount')->type('number');
+        CRUD::addColumn(['name' => 'amount', 'type' => 'number']); 
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -66,17 +63,15 @@ class BookCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(BookRequest::class);
-        CRUD::field('book_title')->type('text');
-        CRUD::addField(['name' => 'book_title', 'type' => 'text']); 
-        CRUD::field('book_author')->type('text');
-        CRUD::addField(['name' => 'book_author', 'type' => 'text']); 
-        CRUD::field('year_publish')->type('date');
-        CRUD::addField(['name' => 'year_publish', 'type' => 'date']); 
-        CRUD::field('ISBN')->type('number');
-        CRUD::addField(['name' => 'ISBN', 'type' => 'number']); 
-        CRUD::field('book_status')->type('text');
-        CRUD::addField(['name' => 'book_status', 'type' => 'text']); 
+
+        //CRUD::field('id')->type('number');
+       // CRUD::addField(['name' => 'id', 'type' => 'number']); 
+        CRUD::field('description')->type('text');
+        CRUD::addField(['name' => 'description', 'type' => 'text']); 
+        CRUD::field('type')->type('text');
+        CRUD::addField(['name' => 'type', 'type' => 'text']); 
+        CRUD::field('amount')->type('number');
+        CRUD::addField(['name' => 'amount', 'type' => 'number']); 
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

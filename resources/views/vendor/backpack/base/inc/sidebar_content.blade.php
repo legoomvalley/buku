@@ -13,7 +13,7 @@
 </li>
 @can('manage book')
 
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('book') }}"><i class="nav-icon la la-address-book"></i> Books</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('book') }}"><i class="nav-icon la la-address-book"></i> Book List</a></li>
 
 @endcan
 @can('manage librarian')
@@ -21,5 +21,9 @@
 @endcan
 
 @can('manage borrow')
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('borrow') }}"><i class="nav-icon la la-calendar-minus"></i> Borrows</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('borrow') }}"><i class="nav-icon la la-calendar-minus"></i> Transactions </a></li>
+@endcan
+
+@can('manage penalty')
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('penalty') }}"><i class="nav-icon la la-money-bill"></i> Penalties</a></li>
 @endcan
