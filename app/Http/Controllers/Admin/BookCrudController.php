@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\BookRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 /**
  * Class BookCrudController
  * @package App\Http\Controllers\Admin
@@ -18,6 +18,7 @@ class BookCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -29,6 +30,8 @@ class BookCrudController extends CrudController
         CRUD::setModel(\App\Models\Book::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/book');
         CRUD::setEntityNameStrings('book', 'books');
+        CRUD::addButtonFromView('line','genqrcode','setupGenerateQRcode','beginning');
+
     }
 
     /**
@@ -37,6 +40,14 @@ class BookCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
+
+    // protected function index()
+    // {
+    //     $this->data['crud'] = $this->crud;
+    //     $this->data['date'] = date('M, Y');
+
+    //     return view('book.list', $this->data);
+    // }
     protected function setupListOperation()
     {
         CRUD::column('book_title')->type('text');
@@ -45,10 +56,12 @@ class BookCrudController extends CrudController
         CRUD::addColumn(['name' => 'book_author', 'type' => 'text']); 
         CRUD::column('year_publish')->type('date');
         CRUD::addColumn(['name' => 'year_publish', 'type' => 'date']); 
-        CRUD::column('ISBN')->type('number');
-        CRUD::addColumn(['name' => 'ISBN', 'type' => 'number']); 
+        CRUD::column('ISBN')->type('text');
+        CRUD::addColumn(['name' => 'ISBN', 'type' => 'text']); 
         CRUD::column('book_status')->type('text');
         CRUD::addColumn(['name' => 'book_status', 'type' => 'text']); 
+        CRUD::addButtonFromView('line','genqrcode','setupGenerateQRcode','beginning');
+        
 
 
         /**
@@ -73,8 +86,8 @@ class BookCrudController extends CrudController
         CRUD::addField(['name' => 'book_author', 'type' => 'text']); 
         CRUD::field('year_publish')->type('date');
         CRUD::addField(['name' => 'year_publish', 'type' => 'date']); 
-        CRUD::field('ISBN')->type('number');
-        CRUD::addField(['name' => 'ISBN', 'type' => 'number']); 
+        CRUD::field('ISBN')->type('text');
+        CRUD::addField(['name' => 'ISBN', 'type' => 'text']); 
         CRUD::field('book_status')->type('text');
         CRUD::addField(['name' => 'book_status', 'type' => 'text']); 
 
@@ -95,4 +108,12 @@ class BookCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+    public function setupGenerateQRcode($id)
+    {
+        $data['no']=$id;
+
+      return view('qrcode')->with('data', $data);
+      
+    }
+
 }
