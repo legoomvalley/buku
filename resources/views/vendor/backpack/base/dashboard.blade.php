@@ -10,7 +10,6 @@
         $widgets['before_content'][] = [
             'type'        => 'jumbotron',
             'heading'     => trans('backpack::base.welcome'),
-            'content'     => trans('backpack::base.use_sidebar'),
             'button_link' => backpack_url('logout'),
             'button_text' => trans('backpack::base.logout'),
         ];
@@ -19,6 +18,7 @@
 
 @section('content')
 
+<hr>
 <div class="container-fluid">
           <div class="animated fadeIn">
             <div class="row">
@@ -30,7 +30,8 @@
                       <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                     </div>
                     <div class="text-value">9.823</div>
-                    <div>Members online</div>
+                    <div>Total User</div>
+                    <a href="{{ url('admin/user') }}" class="text-white">view</a>
                   </div>
                   <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas class="chart chartjs-render-monitor" id="card-chart1" height="87" style="display: block; height: 70px; width: 405px;" width="506"></canvas>
@@ -43,7 +44,8 @@
                   <div class="card-body pb-0">
                     <button class="btn btn-transparent p-0 float-right" type="button"><i class="icon-location-pin"></i></button>
                     <div class="text-value">9.823</div>
-                    <div>Members online</div>
+                    <div>Total Book</div>
+                    <a href="{{ url('admin/book') }}" class="text-white">view</a>
                   </div>
                   <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas class="chart chartjs-render-monitor" id="card-chart2" height="87" style="display: block; height: 70px; width: 403px;" width="503"></canvas>
@@ -59,7 +61,8 @@
                       <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                     </div>
                     <div class="text-value">9.823</div>
-                    <div>Members online</div>
+                    <div>Total Librarians</div>
+                    <a href="{{ url('admin/librarian') }}" class="text-white">view</a>
                   </div>
                   <div class="chart-wrapper mt-3" style="height:70px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas class="chart chartjs-render-monitor" id="card-chart3" height="87" style="display: block; height: 70px; width: 437px;" width="546"></canvas>
@@ -75,7 +78,8 @@
                       <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                     </div>
                     <div class="text-value">9.823</div>
-                    <div>Members online</div>
+                    <div>Penalty Amount Due</div>
+                    <a href="{{ url('admin/penalty') }}" class="text-white">view</a>
                   </div>
                   <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas class="chart chartjs-render-monitor" id="card-chart4" height="87" style="display: block; height: 70px; width: 403px;" width="503"></canvas>
@@ -85,15 +89,16 @@
               <!-- /.col-->
             </div>
             <!-- /.row-->
-            <div class="card">
+            <!-- <div class="card">
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-5">
                     <h4 class="card-title mb-0">Traffic</h4>
                     <div class="small text-muted">November 2017</div>
-                  </div>
+                  </div> -->
+
                   <!-- /.col-->
-                  <div class="col-sm-7 d-none d-md-block">
+                  <!-- <div class="col-sm-7 d-none d-md-block">
                     <button class="btn btn-primary float-right" type="button"><i class="icon-cloud-download"></i></button>
                     <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
                       <label class="btn btn-outline-secondary">
@@ -106,10 +111,11 @@
                         <input id="option3" type="radio" name="options" autocomplete="off"> Year
                       </label>
                     </div>
-                  </div>
+                  </div> -->
+
                   <!-- /.col-->
-                </div>
-                <!-- /.row-->
+                <!-- </div>
+                /.row
                 <div class="chart-wrapper" style="height:300px;margin-top:40px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                   <canvas class="chart chartjs-render-monitor" id="main-chart" height="375" style="display: block; height: 300px; width: 863px;" width="1078"></canvas>
                 </div>
@@ -148,9 +154,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+
             <!-- /.card-->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-sm-6 col-lg-3">
                 <div class="brand-card">
                   <div class="brand-card-header bg-facebook"><i class="fa fa-facebook"></i>
@@ -169,9 +176,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
               <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
+              <!-- <div class="col-sm-6 col-lg-3">
                 <div class="brand-card">
                   <div class="brand-card-header bg-twitter"><i class="fa fa-twitter"></i>
                     <div class="chart-wrapper"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
@@ -189,9 +197,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
               <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
+              <!-- <div class="col-sm-6 col-lg-3">
                 <div class="brand-card">
                   <div class="brand-card-header bg-linkedin"><i class="fa fa-linkedin"></i>
                     <div class="chart-wrapper"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
@@ -209,9 +218,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
               <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
+              <!-- <div class="col-sm-6 col-lg-3">
                 <div class="brand-card">
                   <div class="brand-card-header bg-google-plus"><i class="fa fa-google-plus"></i>
                     <div class="chart-wrapper"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
@@ -229,11 +239,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
               <!-- /.col-->
-            </div>
+            <!-- </div> -->
+
             <!-- /.row-->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">Traffic &amp; Sales</div>
@@ -247,19 +259,22 @@
                                 <canvas id="sparkline-chart-1" width="100" height="30"></canvas>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
+
                           <!-- /.col-->
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6">
                             <div class="callout callout-danger"><small class="text-muted">Recuring Clients</small><br><strong class="h4">22,643</strong>
                               <div class="chart-wrapper">
                                 <canvas id="sparkline-chart-2" width="100" height="30"></canvas>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
+
                           <!-- /.col-->
-                        </div>
+                        <!-- </div> -->
+
                         <!-- /.row-->
-                        <hr class="mt-0">
+                        <!-- <hr class="mt-0">
                         <div class="progress-group mb-4">
                           <div class="progress-group-prepend"><span class="progress-group-text">Monday</span></div>
                           <div class="progress-group-bars">
@@ -337,9 +352,10 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
+                      
                       <!-- /.col-->
-                      <div class="col-sm-6">
+                      <!-- <div class="col-sm-6">
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="callout callout-warning"><small class="text-muted">Pageviews</small><br><strong class="h4">78,623</strong>
@@ -347,19 +363,22 @@
                                 <canvas id="sparkline-chart-3" width="100" height="30"></canvas>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
+
                           <!-- /.col-->
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6">
                             <div class="callout callout-success"><small class="text-muted">Organic</small><br><strong class="h4">49,123</strong>
                               <div class="chart-wrapper">
                                 <canvas id="sparkline-chart-4" width="100" height="30"></canvas>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
+
                           <!-- /.col-->
-                        </div>
+                        <!-- </div> -->
+
                         <!-- /.row-->
-                        <hr class="mt-0">
+                        <!-- <hr class="mt-0">
                         <div class="progress-group">
                           <div class="progress-group-header"><i class="icon-user progress-group-icon"></i>
                             <div>Male</div>
@@ -430,17 +449,21 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
+
                       <!-- /.col-->
-                    </div>
+                    <!-- </div> -->
+
                     <!-- /.row-->
-                  </div>
+                  <!-- </div>
                 </div>
-              </div>
+              </div> -->
+
               <!-- /.col-->
-            </div>
+            <!-- </div> -->
+
             <!-- /.row-->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">Users</div>
@@ -601,7 +624,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
 @endsection
