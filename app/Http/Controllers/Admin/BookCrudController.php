@@ -90,6 +90,7 @@ class BookCrudController extends CrudController
         CRUD::addField(['name' => 'ISBN', 'type' => 'text']); 
         CRUD::field('book_status')->type('text');
         CRUD::addField(['name' => 'book_status', 'type' => 'text']); 
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
