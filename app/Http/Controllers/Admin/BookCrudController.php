@@ -61,8 +61,6 @@ class BookCrudController extends CrudController
         CRUD::column('book_status')->type('text');
         CRUD::addColumn(['name' => 'book_status', 'type' => 'text']); 
         CRUD::addButtonFromView('line','genqrcode','setupGenerateQRcode','beginning');
-        
-
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -116,5 +114,6 @@ class BookCrudController extends CrudController
       return view('qrcode')->with('data', $data);
       
     }
+
 
 }

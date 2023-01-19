@@ -18,6 +18,7 @@ Route::group([
 ], function () { // custom admin routes
     
     Route::crud('book', 'BookCrudController');
+    Route::get('book/{id}/qrcode', [BookCrudController::class, 'setupGenerateQRcode']);
     Route::crud('librarian', 'LibrarianCrudController');
     Route::crud('borrow', 'BorrowCrudController');
     Route::crud('penalty', 'PenaltyCrudController');
