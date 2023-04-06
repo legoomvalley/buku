@@ -11,6 +11,17 @@
     </ul>
     @endcan
 </li>
+
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Transaction List</a>
+    @can('manage borrow')
+    <ul class="nav-dropdown-items">
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('borrow') }}"><i class="nav-icon la la-tachometer-alt"></i> <span>Start System</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('#') }}"><i class="nav-icon la la-clipboard-list"></i> <span>Transaction History</span></a></li>
+    </ul>
+    @endcan
+</li>
+
 @can('manage book')
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('book') }}"><i class="nav-icon la la-address-book"></i> Book List</a></li>
@@ -20,9 +31,9 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('librarian') }}"><i class="nav-icon la la-male"></i> Librarians</a></li>
 @endcan
 
-@can('manage borrow')
+<!-- @can('manage borrow')
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('borrow') }}"><i class="nav-icon la la-calendar-minus"></i> Transactions </a></li>
-@endcan
+@endcan -->
 
 @can('manage penalty')
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('penalty') }}"><i class="nav-icon la la-money-bill"></i> Penalties</a></li>

@@ -26,7 +26,7 @@ class LibrarianCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Librarian::class);
+        CRUD::setModel(\App\Models\User::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/librarian');
         CRUD::setEntityNameStrings('librarian', 'librarians');
     }
@@ -39,11 +39,16 @@ class LibrarianCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('user_id')->type('text');
-        CRUD::addColumn(['name' => 'user_id', 'type' => 'text']); 
-        CRUD::column('librarian_name')->type('text');
-        CRUD::addColumn(['name' => 'librarian_name', 'type' => 'text']); 
-
+        // $lib = User::withRole('librarians')->get();
+        CRUD::column('name')->type('text');
+        CRUD::addColumn(['name' => 'name', 'type' => 'text']); 
+        CRUD::column('email')->type('text');
+        CRUD::addColumn(['name' => 'email', 'type' => 'text']); 
+        CRUD::addClause('whereHas','roles',
+        function($query){
+            $query->where('name','librarians');
+        });
+        
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -59,10 +64,10 @@ class LibrarianCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('user_id')->type('text');
-        CRUD::addField(['name' => 'user_id', 'type' => 'text']); 
-        CRUD::field('librarian_name')->type('text');
-        CRUD::addField(['name' => 'librarian_name', 'type' => 'text']); 
+        // CRUD::field('user_id')->type('text');
+        // CRUD::addField(['name' => 'user_id', 'type' => 'text']); 
+        // CRUD::field('librarian_name')->type('text');
+        // CRUD::addField(['name' => 'librarian_name', 'type' => 'text']); 
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -77,8 +82,8 @@ class LibrarianCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
-    }
+    // protected function setupUpdateOperation()
+    // {
+    //     $this->setupCreateOperation();
+    // }
 }

@@ -31,6 +31,8 @@ class BookCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix') . '/book');
         CRUD::setEntityNameStrings('book', 'books');
         CRUD::addButtonFromView('line','genqrcode','setupGenerateQRcode','beginning');
+        CRUD::addButtonFromView('line','borrow','setupBorrow','end');
+
 
     }
 
@@ -58,9 +60,13 @@ class BookCrudController extends CrudController
         CRUD::addColumn(['name' => 'year_publish', 'type' => 'date']); 
         CRUD::column('ISBN')->type('text');
         CRUD::addColumn(['name' => 'ISBN', 'type' => 'text']); 
-        CRUD::column('book_status')->type('text');
-        CRUD::addColumn(['name' => 'book_status', 'type' => 'text']); 
+        CRUD::column('book_status')->type('select_from_array');
+        CRUD::addColumn(['name' => 'book_status', 'type' => 'select_from_array',
+        'options' => ['Unavailable' => 'Unavailable', 'Available' => 'Available']]); 
         CRUD::addButtonFromView('line','genqrcode','setupGenerateQRcode','beginning');
+        CRUD::addButtonFromView('line','borrow','setupBorrow','end');
+
+       // http://buku.test/admin/borrow
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -87,7 +93,7 @@ class BookCrudController extends CrudController
         CRUD::field('ISBN')->type('text');
         CRUD::addField(['name' => 'ISBN', 'type' => 'text']); 
         CRUD::field('book_status')->type('text');
-        CRUD::addField(['name' => 'book_status', 'type' => 'text']); 
+        CRUD::addField(['name' => 'book_status', 'type' => 'select_from_array','options' => ['Unavailable' => 'Unavailable', 'Available' => 'Available']]); 
         
 
         /**
@@ -112,6 +118,13 @@ class BookCrudController extends CrudController
         $data['no']=$id;
 
       return view('qrcode')->with('data', $data);
+      
+    }
+    public function setupBorrow($id)
+    {
+        $data['no']=$id;
+
+      return view('borrow1')->with('data', $data);
       
     }
 

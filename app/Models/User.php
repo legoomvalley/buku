@@ -45,4 +45,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function liblist(){
+    //     return User::whereHas('roles',function($q){
+    //         $q->where('name','librarians');
+    //     })->get();
+    //  }
 }
